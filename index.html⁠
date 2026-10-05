@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fellowship of Us — For Burak</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=MedievalSharp&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --burgundy: #58111a;
+            --burgundy-light: #801b2c;
+            --burgundy-glow: rgba(128, 27, 44, 0.6);
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --dark-bg: #0a0507;
+            --card-bg: #160a0d;
+            --parchment: #220e13;
+            --text-color: #e0d0d0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .lotr-font {
+            font-family: 'Cinzel Decorative', 'Cinzel', serif;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(10, 5, 7, 0.75) 0%, rgba(88, 17, 26, 0.4) 50%, rgba(10, 5, 7, 1) 100%),
+                        url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920') center/cover no-repeat;
+            padding: 30px 20px;
+            border-bottom: 2px solid var(--burgundy-light);
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: var(--gold-light);
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .hero-badge {
+            background: var(--burgundy);
+            border: 1px solid var(--gold);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .btn-gold {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 12px 28px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--burgundy-glow);
+            border-radius: 4px;
+        }
+
+        .btn-gold:hover, .btn-gold:active {
+            background: var(--burgundy-light);
+            color: #fff;
+            box-shadow: 0 0 25px var(--gold);
+        }
+
+        /* Container & Titles */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 18px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '⚔️';
+            display: block;
+            font-size: 1.1rem;
+            margin-top: 8px;
+        }
+
+        /* 1. Interactive Map */
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+        }
+
+        .location-card {
+            background: var(--card-bg);
+            border: 1px solid var(--burgundy-light);
+            border-radius: 8px;
+            padding: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .location-card:hover, .location-card:active {
+            border-color: var(--gold);
+            box-shadow: 0 4px 20px var(--burgundy-glow);
+            transform: translateY(-3px);
+        }
+
+        .location-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+        }
+
+        .location-card span {
+            font-size: 0.8rem;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* 2. Chronicles (Red Book) */
+        .chronicles-box {
+            background-color: var(--parchment);
+            border: 2px solid var(--burgundy-light);
+            padding: 30px 22px;
+            border-radius: 8px;
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.8);
+            margin-bottom: 60px;
+            font-family: 'MedievalSharp', cursive;
+        }
+
+        .chronicles-box h3 {
+            color: var(--gold);
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .chapter {
+            margin-bottom: 22px;
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.2);
+            padding-bottom: 15px;
+        }
+
+        .chapter h4 {
+            font-size: 1.15rem;
+            color: var(--gold-light);
+            margin-bottom: 6px;
+        }
+
+        .chapter p {
+            font-size: 0.95rem;
+            color: #d1c0c0;
+        }
+
+        /* 3. Character Profile */
+        .character-card {
+            background: linear-gradient(145deg, #120709, #220b10);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 25px 20px;
+            box-shadow: 0 0 25px var(--burgundy-glow);
+            margin-bottom: 60px;
+        }
+
+        .char-header {
+            text-align: center;
+            border-bottom: 1px solid var(--burgundy-light);
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+        }
+
+        .char-stat {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 5px;
+            border-left: 3px solid var(--burgundy-light);
+        }
+
+        .char-stat label {
+            color: var(--gold-light);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .char-stat span {
+            font-size: 0.95rem;
+            color: #fff;
+            margin-top: 2px;
+        }
+
+        /* 4. Soundtrack */
+        .track-list {
+            list-style: none;
+            margin-bottom: 60px;
+        }
+
+        .track-item {
+            background: var(--card-bg);
+            margin-bottom: 12px;
+            padding: 16px;
+            border-left: 4px solid var(--burgundy-light);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .track-title {
+            font-weight: bold;
+            color: var(--gold);
+            font-size: 1rem;
+            display: block;
+        }
+
+        .track-desc {
+            font-style: italic;
+            font-size: 0.88rem;
+            color: #bbb;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* 5. Quest & Secret Letter */
+        .quest-box {
+            background: var(--card-bg);
+            border: 1px solid var(--gold);
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.9);
+        }
+
+        .quest-box input {
+            background: #0a0507;
+            border: 1px solid var(--gold);
+            color: #fff;
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 5px;
+            margin: 15px 0;
+            width: 100%;
+            max-width: 280px;
+            text-align: center;
+        }
+
+        .secret-message {
+            display: none;
+            margin-top: 25px;
+            padding: 22px;
+            background: rgba(88, 17, 26, 0.4);
+            border: 2px dashed var(--gold);
+            border-radius: 8px;
+            text-align: left;
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Modal Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 2px solid var(--gold);
+            padding: 25px;
+            max-width: 450px;
+            width: 100%;
+            border-radius: 10px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 0 30px var(--burgundy-glow);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px; right: 15px;
+            color: var(--gold);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #777;
+            font-size: 0.8rem;
+            border-top: 1px solid #1a0a0d;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-badge">DISTANCE: 839 KM • BOND: UNBREAKABLE</div>
+        <h1>THE FELLOWSHIP OF US</h1>
+        <p>A Tale of Dracula Burak & The Queen of Zarveth</p>
+        <button class="btn-gold" onclick="scrollToSection('map')">BEGIN THE JOURNEY</button>
+    </section>
+
+    <div class="container">
+
+        <!-- 1. MAP SECTION -->
+        <section id="map" style="margin-bottom: 70px;">
+            <h2 class="section-title">Our Middle-Earth</h2>
+            <p style="text-align: center; margin-bottom: 25px; color: var(--gold-light); font-size: 0.9rem;">
+                Tap on any realm to unlock hidden memories of our journey:
+            </p>
+            <div class="map-grid">
+                <div class="location-card" onclick="openModal('The Realm of Makro', 'How We Found Each Other', 'Across the digital void, a profile appeared with immaculate music taste and a sweet face. A like was cast, an Instagram quest was launched, and within a day, our endless conversation began.')">
+                    <h3>📜 The Realm of Makro</h3>
+                    <span>First Encounter</span>
+                </div>
+                <div class="location-card" onclick="openModal('The Mysterious Cipher', 'The Alien Alphabet', 'When asked what stood out from our very first talk, the answer was clear: the Alien Alphabet cipher I sent you. A strange, beautiful beginning.')">
+                    <h3>👾 Alien Alphabet</h3>
+                    <span>First Memory</span>
+                </div>
+                <div class="location-card" onclick="openModal('The Bush Rescue', 'When You Saved The Phone', 'Our most iconic funny memory... When my phone fell deep into the bushes during our meeting, and you jumped over the fences like a true Ranger to rescue it!')">
+                    <h3>🌿 The Bush Rescue</h3>
+                    <span>Funniest Moment</span>
+                </div>
+                <div class="location-card" onclick="openModal('Rivendell', 'Pure Admiration', 'Reflecting the traits I love most in you: your deep compassion, your understanding soul, and the rare harmony where our spirits feel completely as one.')">
+                    <h3>🧝‍♂️ Rivendell</h3>
+                    <span>What I Love In You</span>
+                </div>
+                <div class="location-card" onclick="openModal('Minas Tirith', 'The Great Meeting', 'After 1 month of talking, we met face to face. That meeting sealed everything, transforming our connection into our official story.')">
+                    <h3>👑 Minas Tirith</h3>
+                    <span>The Meeting & The Vow</span>
+                </div>
+                <div class="location-card" onclick="openModal('Mordor', 'Forbidden Lands', 'Where foolishness, disrespect, boundary-crossing, injustice, and unrewarded effort reside. A realm we shall never step into together!')">
+                    <h3>🌋 Mordor</h3>
+                    <span>The Unreachable Void</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. THE CHRONICLES OF BURAK -->
+        <section style="margin-bottom: 70px;">
+            <div class="chronicles-box">
+                <h3>THE RED BOOK OF BURAK</h3>
+                <p style="text-align: center; font-style: italic; margin-bottom: 25px; color: var(--gold-light); font-size: 0.85rem;">
+                    "Being an account of one particular human who became the entire world to a Queen from Zarveth."
+                </p>
+                
+                <div class="chapter">
+                    <h4>I — Two Strangers in the Crowd</h4>
+                    <p>You once said, <em>"I was a stranger among people, until I found myself in you; that is why I chose you."</em> From 839 km away, two souls who felt different from the rest of the world finally met.</p>
+                </div>
+                
+                <div class="chapter">
+                    <h4>II — The Vampire & The Queen</h4>
+                    <p>A castle-bound Dracula and the Queen of Planet Zarveth. Through alien alphabets, late-night talks, and shared music, a bond stronger than any physical distance was forged.</p>
+                </div>
+
+                <div class="chapter">
+                    <h4>III — "Ruhum Sarıldı Sana"</h4>
+                    <p>Four months of knowing each other, three months of pure love. Distance is merely a number when my soul is forever wrapped around yours, staying by your side every single second.</p>
+                </div>
+
+                <div class="chapter">
+                    <h4>IV — The Sanctuary We Will Build</h4>
+                    <p>Our dream awaits: a cozy detached house filled with our cats, creating music together in our own band, exploring every corner of the world, waking up and falling asleep next to each other every single day.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. CHARACTER PROFILE -->
+        <section style="margin-bottom: 70px;">
+            <h2 class="section-title">Character Profile</h2>
+            <div class="character-card">
+                <div class="char-header">
+                    <h3 style="font-size: 1.6rem; color: var(--gold);">BURAK (21)</h3>
+                    <p style="color: var(--gold-light); font-style: italic; font-size: 0.9rem;">Dracula Burak • The Ranger & Engineer</p>
+                </div>
+                <div class="char-stat">
+                    <label>FAVORITE HERO:</label>
+                    <span>Aragorn (Dúnedain Ranger)</span>
+                </div>
+                <div class="char-stat">
+                    <label>CLASS & PROFESSION:</label>
+                    <span>Computer Engineer & Game Designer</span>
+                </div>
+                <div class="char-stat">
+                    <label>SPECIAL PASSIVES:</label>
+                    <span>Master Problem Solver, Deep Curiosity, Respect & Empathy</span>
+                </div>
+                <div class="char-stat">
+                    <label>FAVORITE REALMS (UNIVERSES):</label>
+                    <span>LOTR, Witcher 3, Devil May Cry, Berserk, TLOU, God of War, Star Wars</span>
+                </div>
+                <div class="char-stat">
+                    <label>WEAPONS & SKILLS:</label>
+                    <span>Electric Guitar Shredding, Impeccable Taste, Sharp Humor</span>
+                </div>
+                <div class="char-stat" style="border-left-color: var(--gold); background: rgba(88, 17, 26, 0.5); margin-top: 15px;">
+                    <label style="color: var(--gold);">FELLOWSHIP STATUS:</label>
+                    <span style="color: #fff; font-size: 0.88rem;">Bound to the Queen of Zarveth across 839 km. Fate: Eternal Union.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SOUNDTRACK OF OUR FELLOWSHIP -->
+        <section style="margin-bottom: 70px;">
+            <h2 class="section-title">Metal & Fellowship Soundtrack</h2>
+            <ul class="track-list">
+                <li class="track-item">
+                    <span class="track-title">🎵 Buckethead & Opeth — The Solitude & Melodies</span>
+                    <span class="track-desc">For the quiet moments when your guitar speaks the words words cannot express.</span>
+                </li>
+                <li class="track-item">
+                    <span class="track-title">🎵 HIM & Sleep Token — My Sweet 666</span>
+                    <span class="track-desc">A gothic romance echo across 839 km, carrying the dark aesthetic of our love.</span>
+                </li>
+                <li class="track-item">
+                    <span class="track-title">🎵 Deftones, Gojira & Tool — The Heavy Resonance</span>
+                    <span class="track-desc">Complex, deep, and powerful — just like your intellect and problem-solving mind.</span>
+                </li>
+                <li class="track-item">
+                    <span class="track-title">🎵 Dream Theater & Iron Maiden — The Journey Ahead</span>
+                    <span class="track-desc">The anthem of our future home, our cat sanctuary, and our own music band.</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 5. QUEST & SECRET LETTER -->
+        <section id="quest" style="margin-bottom: 50px;">
+            <h2 class="section-title">The Secret Oath</h2>
+            <div class="quest-box">
+                <p style="font-size: 1rem; margin-bottom: 12px; color: var(--gold-light);">
+                    "To reveal the secret parchment, enter the title given to your Queen:"
+                </p>
+                <p style="font-style: italic; font-size: 0.85rem; color: #aaa; margin-bottom: 15px;">
+                    (Hint: "My sweet ___")
+                </p>
+                <input type="text" id="questInput" placeholder="Enter password...">
+                <br>
+                <button class="btn-gold" onclick="checkAnswer()">UNLOCK PARCHMENT</button>
+
+                <div id="secretMessage" class="secret-message">
+                    <h3 style="color: var(--gold); margin-bottom: 15px; text-align: center;">📜 TO MY ADAGIO</h3>
+                    <p style="color: #f0e0e0; font-size: 0.95rem; line-height: 1.8; margin-bottom: 15px;">
+                        I am so proud of you, and I am right behind you in every single step you take in this life. You will never, ever be alone, because my soul stays with you at every moment across these 839 kilometres.
+                    </p>
+                    <p style="color: #f0e0e0; font-size: 0.95rem; line-height: 1.8; margin-bottom: 15px;">
+                        One day, this distance will dissolve into nothingness, and I will be right next to you physically. I love you under all conditions, against all odds, simply for who you are—and I always will.
+                    </p>
+                    <p style="color: var(--gold-light); font-size: 1.1rem; text-align: center; font-weight: bold; font-style: italic; margin-top: 20px;">
+                        Musica sei, Adagio. ❤️
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- MODAL POPUP -->
+    <div id="mapModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle" style="margin-bottom: 8px;"></h3>
+            <h4 id="modalSubtitle" style="color: var(--gold-light); font-size: 0.85rem; margin-bottom: 12px; text-transform: uppercase;"></h4>
+            <p id="modalText" style="color: #ddd; font-size: 0.92rem; line-height: 1.6;"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Crafted for Dracula Burak by The Queen of Zarveth • 839 km</p>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openModal(title, subtitle, text) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalSubtitle').innerText = subtitle;
+            document.getElementById('modalText').innerText = text;
+            document.getElementById('mapModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('mapModal').style.display = 'none';
+        }
+
+        function checkAnswer() {
+            const input = document.getElementById('questInput').value.trim();
+            // Password set to 666
+            if (input === '666') {
+                document.getElementById('secretMessage').style.display = 'block';
+                document.getElementById('secretMessage').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('Wrong password! Hint: "My sweet ___" (The number)');
+            }
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('mapModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
